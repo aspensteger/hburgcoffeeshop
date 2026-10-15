@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="A guide to four of the best local coffee shops in Harrisonburg, Virginia.">
+  <meta name="author" content="Coffee Shops">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Best HBURG Coffee Shops</title>
+
+  <!-- Install Bootstrap with: npm i bootstrap@5.3.8 -->
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marko+One&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --coffee-cream: #f7f3ec;
+      --coffee-paper: #fffdf9;
+      --coffee-brown: #684b3c;
+      --coffee-orange: #bd8955;
+      --coffee-ink: #352a24;
+      --coffee-line: #d8c8b8;
+    }
+
+    body {
+      margin: 0;
+      background: var(--coffee-cream);
+      color: var(--coffee-ink);
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.75;
+      padding: 20px;
+    }
+
+    .site-header {
+      background: var(--coffee-paper);
+      border-bottom: 1px solid var(--coffee-line);
+    }
+
+    .brand-mark {
+      width: 3.5rem;
+      height: 3.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 2px solid var(--coffee-orange);
+      border-radius: 50%;
+      color: var(--coffee-brown);
+      font-family: "Marko One", Georgia, serif;
+      font-size: 1.25rem;
+      text-decoration: none;
+    }
+
+    .navbar .navbar-nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: .45rem;
+    }
+
+    .navbar .nav-link {
+      color: var(--coffee-brown);
+      border: 1px solid var(--coffee-line);
+      border-radius: .25rem;
+      margin-left: 0;
+      padding: .35rem .75rem;
+      white-space: nowrap;
+    }
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link:focus {
+      background: var(--coffee-cream);
+      color: #3e2a1e;
+    }
+
+    h1, h2, h3 {
+      color: var(--coffee-brown);
+    }
+
+    h1, h2 {
+      font-family: "Marko One", Georgia, serif;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.25;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    a {
+      color: #78502f;
+    }
+
+    a:hover {
+      color: #4c3424;
+    }
+
+    .hero {
+      padding: 3rem 0 2.5rem;
+      text-align: center;
+    }
+
+    .hero-copy {
+      max-width: 850px;
+      margin-inline: auto;
+    }
+
+    .hero-image {
+      display: block;
+      width: min(100%, 420px);
+      max-height: 290px;
+      object-fit: cover;
+      margin: 2rem auto 0;
+      border: 8px solid white;
+      box-shadow: 0 .4rem 1.2rem rgba(53, 42, 36, .12);
+    }
+
+    .section-panel {
+      background: var(--coffee-paper);
+      border: 1px solid var(--coffee-line);
+      border-radius: .4rem;
+      padding: clamp(1.25rem, 3vw, 2rem);
+      margin-bottom: 2rem;
+    }
+
+    .guide-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .75rem;
+      padding: 0;
+      margin: 1.25rem 0 0;
+      list-style: none;
+    }
+
+    .guide-links a {
+      display: inline-block;
+      padding: .55rem 1rem;
+      border: 1px solid var(--coffee-line);
+      border-radius: .3rem;
+      background: #fff;
+      text-decoration: none;
+    }
+
+    .guide-links a:hover {
+      background: var(--coffee-cream);
+    }
+
+    .cafe-card {
+      height: 100%;
+      padding: 1.25rem;
+      border: 1px solid var(--coffee-line);
+      border-radius: .35rem;
+      background: #fff;
+    }
+
+    .cafe-card address {
+      margin-bottom: .75rem;
+      font-style: normal;
+      color: #65564c;
+    }
+
+    .quote {
+      height: 100%;
+      padding: 1.25rem;
+      border-left: 4px solid var(--coffee-orange);
+      background: #fff;
+      font-style: italic;
+    }
+
+    .quote cite {
+      display: block;
+      margin-top: .6rem;
+      color: var(--coffee-brown);
+      font-style: normal;
+      font-weight: bold;
+    }
+
+    .site-footer {
+      padding: 1.5rem 0;
+      background: var(--coffee-brown);
+      color: #fffaf4;
+      text-align: center;
+    }
+
+    .site-footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 767.98px) {
+      .navbar .navbar-nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        padding-top: .75rem;
+      }
+
+      .navbar .nav-link {
+        margin: .15rem 0;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .hero {
+        padding-top: 2rem;
+      }
+
+    }
+    .site-nav {
+  min-height: 7.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: .65rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav-links li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav-links a {
+  display: block;
+  padding: .4rem .9rem;
+  border: 1px solid #d8c8b8;
+  border-radius: .35rem;
+  color: #684b3c;
+  text-decoration: none;
+  white-space: nowrap;
+}
+  </style>
+</head>
+
+<body>
+  <!-- Header / navigation -->
+<header class="site-header">
+  <nav class="site-nav container" aria-label="Main navigation">
+    <a class="brand-mark" href="#top"
+       aria-label="Harrisonburg Coffee Shops home">HC</a>
+
+    <ul class="site-nav-links">
+      <li><a href="#guide">Guide</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <main id="top" class="container">
+    <!-- Intro / title and image -->
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>The Best HBURG Coffee Shops</h1>
+        <p class="mt-3">
+          Harrisonburg has plenty of great coffee shops, but Broad Porch, Black Sheep,
+          Drifters, and Greenberry’s stand out for their unique atmosphere, quality coffee,
+          and local feel. Whether you’re looking for a cozy place to study, a quick morning
+          coffee, or a spot to meet up with friends, these four cafés offer something for
+          everyone. Together, they showcase some of the best local coffee experiences
+          Harrisonburg has to offer.
+        </p>
+      </div>
+      <img class="hero-image" src="coffeeontable.jpeg" alt="Coffee mug sitting in a dish on a wooden table">
+    </section>
+
+    <!-- Coffee guide -->
+    <section id="guide" class="section-panel text-center">
+      <h2>Harrisonburg Coffee Guide</h2>
+      <p class="mb-0">Your guide to local coffee, cozy cafés, and good vibes. Check out each café’s website!</p>
+      <ul class="guide-links">
+        <li><a href="https://www.broadporchcoffee.com/" target="_blank" rel="noopener noreferrer">Broad Porch</a></li>
+        <li><a href="https://www.blacksheepcoffeehburg.com/" target="_blank" rel="noopener noreferrer">Black Sheep</a></li>
+        <li><a href="https://www.driftourway.com/" target="_blank" rel="noopener noreferrer">Drifter’s Cafe</a></li>
+        <li><a href="https://greenberrys.com/" target="_blank" rel="noopener noreferrer">Greenberry’s Coffee Co.</a></li>
+      </ul>
+    </section>
+
+    <!-- Location and descriptions -->
+    <section id="locations" class="mb-5">
+      <div class="text-center mb-4">
+        <h2>Locations &amp; Descriptions</h2>
+        <p class="fst-italic">Four local stops, each with its own personality.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-12 col-md-6">
+          <article class="cafe-card">
+            <h3>Broad Porch</h3>
+            <address>47 Court Square, Harrisonburg, VA 22801</address>
+            <p class="mb-0">A warm and welcoming downtown café known for freshly brewed coffee, espresso drinks, tea, and a food menu. Broad Porch also roasts its own coffee and offers a comfortable space to relax, study, or meet up with friends.</p>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <article class="cafe-card">
+            <h3>Black Sheep</h3>
+            <address>80 E Market St, Harrisonburg, VA 22801</address>
+            <p class="mb-0">A cozy coffee shop just off Court Square, Black Sheep specializes in espresso, drip coffee, and pour-over drinks. They also offer loose-leaf tea, specialty beverages, and baked goods made in-house.</p>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <article class="cafe-card">
+            <h3>Drifter’s Cafe</h3>
+            <address>217 S Liberty St, Suite 104, Harrisonburg, VA 22801</address>
+            <p class="mb-0">A local café in downtown Harrisonburg serving coffee alongside breakfast, lunch, sweets, and other café favorites. Drifters has a relaxed, community-focused atmosphere and offers both indoor and outdoor seating.</p>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <article class="cafe-card">
+            <h3>Greenberry’s Coffee Co.</h3>
+            <address>400 S High St, Harrisonburg, VA 22801</address>
+            <p class="mb-0">A longtime Virginia coffee company serving small-batch, craft-roasted coffee. The Harrisonburg café offers coffee, cold brew, breakfast and lunch options, sandwiches, and baked goods in a comfortable community setting.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="mb-5">
+      <div class="text-center mb-4">
+        <h2>Why Are These the Best?</h2>
+        <p class="fst-italic">Heard it. Tried it. Know it.</p>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <blockquote class="quote mb-0">
+            “The coffee was delicious, the atmosphere was beautiful, and the staff was incredibly friendly.”
+            <cite>— Broad Porch</cite>
+          </blockquote>
+        </div>
+        <div class="col-12 col-md-6">
+          <blockquote class="quote mb-0">
+            “Amazing coffee and breakfast sandwiches. I wish I had started coming here sooner!”
+            <cite>— Black Sheep</cite>
+          </blockquote>
+        </div>
+        <div class="col-12 col-md-6">
+          <blockquote class="quote mb-0">
+            “The staff is so nice, the service is quick, and the food and coffee are delicious!”
+            <cite>— Drifter’s Cafe</cite>
+          </blockquote>
+        </div>
+        <div class="col-12 col-md-6">
+          <blockquote class="quote mb-0">
+            “The breakfast burrito is one of the best I’ve had, and the atmosphere is so cozy!”
+            <cite>— Greenberry’s Coffee Co.</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Harrisonburg Coffee Shops</p>
+    </div>
+  </footer>
+
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
